@@ -1,4 +1,4 @@
-import java.net.URI;
+﻿import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -23,8 +23,14 @@ public class App {
         List<Map<String, String>> lista = json.parse(body);
 
         //mostrar os dados
+        var gera = new GeradorDeFigurinha();
         for (Map<String,String> filmes : lista) {
-            System.out.println(filmes.get("image"));
+
+            String urlImage = filmes.get("image");
+            //String text = "teste";
+            String nomeDoArquivo = filmes.get("fullTitle");
+
+            gera.cria(urlImage, nomeDoArquivo);
             System.out.println(filmes.get("fullTitle"));
             System.out.println(filmes.get("rank"));
             System.out.println();
